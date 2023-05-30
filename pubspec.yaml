@@ -1,0 +1,101 @@
+name: app_movie
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.18.2 <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.5
+  get_storage: ^2.1.1
+  flutter: 
+    sdk: flutter
+  flutter_svg: ^1.1.6
+  avatar_glow: ^2.0.2
+  gestures: ^1.0.0
+  panorama: ^0.4.1
+  image_picker: ^0.8.7
+  flutter_bloc: ^8.1.2
+  shared_preferences: ^2.1.0
+  flutter_easyloading: ^3.0.5
+  email_auth: ^1.0.0
+  firebase_core: ^2.9.0
+  firebase_auth: ^4.4.1
+  email_otp: ^2.0.1
+  permission_handler: ^10.2.0
+  speech_to_text: ^6.1.1
+  firebase_phone_auth_handler: ^1.0.8
+  provider: ^6.0.5
+  pinput: ^2.2.21
+  easy_container: ^1.0.4+1
+  intl_phone_field: ^3.1.0
+  record: ^4.4.4
+  record_windows: '>=0.7.1 < 2.0.0'
+  # audioplayers: ^4.0.1
+  path_provider: ^2.0.1
+  highlight_text: ^1.6.0
+  tflite_audio: ^0.3.0
+  mailer: ^6.0.0
+  bubble: ^1.2.1
+  flutter_local_notifications: ^14.0.0+1
+  charts_flutter: ^0.12.0
+  flutter_sms: ^2.3.3
+  fl_chart: ^0.62.0
+  webview_flutter: ^4.2.1
+  flutter_inappwebview: ^5.7.2+3
+  mic_stream: ^0.6.5
+  audioplayers: ^4.0.1
+  camera: ^0.10.5+2
+  assets_audio_player: ^3.0.6
+  just_audio: ^0.9.33
+  just_audio_background: ^0.0.1-beta.10
+  flutter_tts: ^3.6.3
+  microphone: ^0.1.0
+  flutter_sound: ^8.0.3
+  dio: ^5.1.2
+  # flutter_webview_plugin: ^0.4.0
+  # flutter_sound: ^9.2.13
+  # audio_picker: ^1.0.0
+  # syncfusion_flutter_datagrid: ^21.2.6
+  # microphone: ^0.0.1
+  # just_audio: ^0.9.32
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/images/
+    - assets/images/onboarding/
+    - assets/images/home/
+    - assets/images/splash/
+    - assets/images/log/
+    - assets/model/
+    - assets/images/dasbor/
+    - assets/voice/
+    - assets/audio/
+    - assets/voice/RemajaP.wav
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/OpenSans-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/OpenSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/OpenSans-Bold.ttf
+          weight: 700
