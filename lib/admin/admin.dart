@@ -1,3 +1,4 @@
+import 'package:app_movie/admin/analisis/analisis.dart';
 import 'package:app_movie/admin/chart/chart.dart';
 import 'package:app_movie/admin/history/data/data_admin.dart';
 import 'package:app_movie/admin/history/data/data_gender.dart';
@@ -546,7 +547,7 @@ class _HalamanAdminState extends State<HalamanAdmin> {
                                           height: 10,
                                         ),
                                         Text(
-                                          "Data Admin",
+                                          "Data Users",
                                           style: TextStyle(
                                             color: Color.fromARGB(
                                                 255, 241, 241, 241),
@@ -608,7 +609,7 @@ class _HalamanAdminState extends State<HalamanAdmin> {
                                         ),
                                         SizedBox(height: 10),
                                         Text(
-                                          "Analisis",
+                                          "Grafik",
                                           style: TextStyle(
                                             color: Color.fromARGB(
                                                 255, 241, 241, 241),
@@ -695,7 +696,10 @@ class _HalamanAdminState extends State<HalamanAdmin> {
                 height: 30,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => Analisis()));
+                },
                 child: Container(
                   width: 360,
                   height: 90,
@@ -757,6 +761,7 @@ class _HalamanAdminState extends State<HalamanAdmin> {
               SizedBox(
                 height: 30,
               ),
+
               // Container(
               //   margin: EdgeInsets.symmetric(horizontal: 20),
               //   decoration: BoxDecoration(
@@ -808,9 +813,6 @@ class _HalamanAdminState extends State<HalamanAdmin> {
               //     ],
               //   ),
               // ),
-              SizedBox(
-                height: 20,
-              ),
             ],
           ),
         ),

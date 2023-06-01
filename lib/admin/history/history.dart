@@ -148,7 +148,7 @@ class _MenuHistoryState extends State<MenuHistory> {
                                     height: 5,
                                   ),
                                   Text(
-                                    "Data Admin",
+                                    "Data Users",
                                     style: TextStyle(
                                         color:
                                             Color.fromARGB(255, 255, 255, 255),

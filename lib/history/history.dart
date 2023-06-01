@@ -1,4 +1,4 @@
-import 'package:app_movie/dasbor/film_dewasa/widgets/CustomNavBar.dart';
+import 'package:app_movie/dasbor/film_dewasa/NavbarDewasa.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -21,7 +21,7 @@ class _HistoryState extends State<History> {
           ),
         ),
       ),
-      bottomNavigationBar: CustomNavBar(),
+      bottomNavigationBar: NavbarDewasa(),
     );
   }
 }

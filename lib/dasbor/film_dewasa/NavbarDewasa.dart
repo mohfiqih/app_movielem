@@ -1,15 +1,15 @@
 import 'package:app_movie/chat/chat_dewasa.dart';
-import 'package:app_movie/dasbor/film_dewasa/HomePage.dart';
+import 'package:app_movie/dasbor/film_dewasa/Home_dewasa.dart';
 import 'package:app_movie/history/history.dart';
 import 'package:app_movie/login/login.dart';
 import 'package:flutter/material.dart';
 
-class CustomNavBar extends StatelessWidget {
+class NavbarDewasa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 70,
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
         color: Color(0xFFFFFFFF),
         borderRadius: BorderRadius.only(

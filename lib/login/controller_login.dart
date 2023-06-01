@@ -25,7 +25,7 @@ import 'package:flutter_sms/flutter_sms.dart';
 class HttpService {
   static final _client = http.Client();
 
-  static var _loginUrl = Uri.parse(ip_login);
+  static var _loginUrl = Uri.parse(ip_universal + 'login');
 
   static flutter_login(email, password, context) async {
     http.Response response = await _client.post(
@@ -90,7 +90,7 @@ class HttpService {
 class Resend {
   static final _client = http.Client();
 
-  static var _loginUrl = Uri.parse(ip_resend_otp);
+  static var _loginUrl = Uri.parse(ip_universal + 'login');
 
   static flutter_login(email, password, context) async {
     http.Response response = await _client.post(_loginUrl, body: {

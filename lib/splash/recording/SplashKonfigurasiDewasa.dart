@@ -1,17 +1,15 @@
-import 'package:app_movie/dasbor/notif.dart';
 import 'package:app_movie/onboarding/onboarding_view.dart';
-import 'package:app_movie/record/record.dart';
-import 'package:app_movie/record/recording.dart';
+import 'package:app_movie/splash/recording/SuccessDewasa.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Complete_OTP extends StatefulWidget {
+class SplashKonfigurasiDewasa extends StatefulWidget {
   @override
-  State<Complete_OTP> createState() => _Complete_OTP();
+  State<SplashKonfigurasiDewasa> createState() => _SplashKonfigurasiDewasa();
 }
 
-class _Complete_OTP extends State<Complete_OTP> {
+class _SplashKonfigurasiDewasa extends State<SplashKonfigurasiDewasa> {
   @override
   void initState() {
     super.initState();
@@ -23,11 +21,9 @@ class _Complete_OTP extends State<Complete_OTP> {
     return Timer(duration, () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) {
-          return Recording();
+          return SuccessDewasa();
         }),
       );
-      NotificationWidget.showNotification(
-          title: "Movielem 😉", body: 'Validasi OTP Berhasil!👍');
     });
   }
 
@@ -45,8 +41,8 @@ class _Complete_OTP extends State<Complete_OTP> {
                 Expanded(
                   flex: 10,
                   child: SvgPicture.asset(
-                    "assets/images/splash/complete.svg",
-                    height: 200,
+                    "assets/images/splash/tunggu.svg",
+                    height: 150,
                   ),
                 ),
                 const Spacer(),
@@ -54,9 +50,17 @@ class _Complete_OTP extends State<Complete_OTP> {
             ),
             SizedBox(height: 30),
             Text(
-              "Token Success!",
+              "Sedang mengkonfigurasi suara anda",
               style: TextStyle(fontSize: 16),
-            )
+            ),
+            SizedBox(height: 180),
+            Center(
+              child: Image(
+                image: AssetImage('assets/images/splash/loading.gif'),
+                height: 120.0,
+                width: 120.0,
+              ),
+            ),
           ],
         ),
       ),

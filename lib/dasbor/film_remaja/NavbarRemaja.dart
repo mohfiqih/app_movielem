@@ -10,7 +10,7 @@ class NavbarRemaja extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 70,
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
         color: Color(0xFFFFFFFF),
         borderRadius: BorderRadius.only(

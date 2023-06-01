@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:app_movie/IP/ip.dart';
 import 'package:app_movie/admin/analisis/analisis.dart';
+import 'package:app_movie/admin/history/data/data_admin.dart';
 import 'package:app_movie/admin/history/history.dart';
 import 'package:app_movie/login/login.dart';
 import 'package:app_movie/onboarding/onboarding_view.dart';
@@ -15,7 +16,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 class HttpService {
   static final _client = http.Client();
 
-  static var _registerUrl = Uri.parse(ip_register + 'register-user');
+  static var _registerUrl = Uri.parse(ip_universal + 'register-user');
 
   static flutter_register(email, name, password, re_password, context) async {
     http.Response response = await _client.post(
@@ -49,7 +50,7 @@ class HttpService {
 class RegisterAdmin {
   static final _client = http.Client();
 
-  static var _adminregisterUrl = Uri.parse(ip_register + 'register-admin');
+  static var _adminregisterUrl = Uri.parse(ip_universal + 'register-admin');
 
   static register_admin(email, name, password, re_password, context) async {
     http.Response response = await _client.post(
@@ -71,7 +72,7 @@ class RegisterAdmin {
         // Jika data tidak ada maka akan masuk ke menu selanjutnya
         await EasyLoading.showSuccess(json[0]);
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Analisis()));
+            context, MaterialPageRoute(builder: (context) => DataAdmin()));
       }
     } else {
       await EasyLoading.showError(

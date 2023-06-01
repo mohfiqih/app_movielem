@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:app_movie/admin/admin.dart';
 import 'package:app_movie/admin/history/data/data_admin.dart';
 import 'package:app_movie/admin/history/history.dart';
+import 'package:app_movie/admin/history/skip_/model/model_admin.dart';
 import 'package:app_movie/audio/audio.dart';
 import 'package:app_movie/camera/camera.dart';
+import 'package:app_movie/dasbor/film_dewasa/Home_dewasa.dart';
 import 'package:app_movie/dasbor/film_anak/Home_anak.dart';
-import 'package:app_movie/dasbor/film_dewasa/HomePage.dart';
-import 'package:app_movie/dasbor/film_dewasa/dasbor.dart';
 import 'package:app_movie/dasbor/film_remaja/Home_remaja.dart';
 import 'package:app_movie/dasbor/notif.dart';
 import 'package:app_movie/otp/otp.dart';
@@ -108,7 +108,7 @@ class _SliderLayoutViewState extends State<SliderLayoutView> {
                       onTap: () async {
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
-                            builder: (context) => HalamanAdmin(),
+                            builder: (context) => Recording(),
                           ),
                         );
                       },

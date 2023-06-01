@@ -103,60 +103,60 @@ class _OTPState extends State<OTP> {
                 key: _formState,
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Container(
-                        child: Text(
-                          "Re-Email",
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.black,
-                          ),
-                        ),
-                        alignment: Alignment.centerLeft,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Container(
-                        padding: const EdgeInsets.all(7),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 20.0),
-                          child: Column(
-                            children: [
-                              TextFormField(
-                                textInputAction: TextInputAction.done,
-                                // keyboardType: TextInputType.number,
-                                obscureText: false,
-                                // controller: otpController,
-                                decoration: InputDecoration(
-                                  icon: new Icon(Icons.email),
-                                  border: InputBorder.none,
-                                  hintText: 'Masukan Ulang Email',
-                                ),
-                                onChanged: (value) {
-                                  setState(() {
-                                    email = value;
-                                  });
-                                },
-                                validator: ((value) {
-                                  if (value == '') {
-                                    return "Masukan Email terlebih dahulu!";
-                                  }
-                                }),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 20),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    //   child: Container(
+                    //     child: Text(
+                    //       "Re-Email",
+                    //       style: TextStyle(
+                    //         fontSize: 17,
+                    //         color: Colors.black,
+                    //       ),
+                    //     ),
+                    //     alignment: Alignment.centerLeft,
+                    //   ),
+                    // ),
+                    // SizedBox(height: 10),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    //   child: Container(
+                    //     padding: const EdgeInsets.all(7),
+                    //     decoration: BoxDecoration(
+                    //       color: Colors.grey[200],
+                    //       border: Border.all(color: Colors.white),
+                    //       borderRadius: BorderRadius.circular(12),
+                    //     ),
+                    //     child: Padding(
+                    //       padding: EdgeInsets.only(left: 20.0),
+                    //       child: Column(
+                    //         children: [
+                    //           TextFormField(
+                    //             textInputAction: TextInputAction.done,
+                    //             // keyboardType: TextInputType.number,
+                    //             obscureText: false,
+                    //             // controller: otpController,
+                    //             decoration: InputDecoration(
+                    //               icon: new Icon(Icons.email),
+                    //               border: InputBorder.none,
+                    //               hintText: 'Masukan Ulang Email',
+                    //             ),
+                    //             onChanged: (value) {
+                    //               setState(() {
+                    //                 email = value;
+                    //               });
+                    //             },
+                    //             validator: ((value) {
+                    //               if (value == '') {
+                    //                 return "Masukan Email terlebih dahulu!";
+                    //               }
+                    //             }),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Container(
@@ -170,6 +170,7 @@ class _OTPState extends State<OTP> {
                         alignment: Alignment.centerLeft,
                       ),
                     ),
+                    SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Container(
@@ -209,14 +210,14 @@ class _OTPState extends State<OTP> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 40),
                     InkWell(
                       onTap: () async {
                         if (_formState.currentState!.validate()) {
                           // print("Validation Success");
-                          print("email : " + email!);
+                          // print("email : " + email!);
                           print("token : " + token!);
-                          await Cek_otp.flutter_token(email, token, context);
+                          await Cek_otp.flutter_token(token, context);
                         } else {
                           print("Validation Error");
                         }
@@ -255,7 +256,7 @@ class _OTPState extends State<OTP> {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 30,
               ),
               Text(
                 "Didn't you receive any code?",

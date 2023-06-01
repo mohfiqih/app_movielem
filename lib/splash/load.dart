@@ -1,6 +1,4 @@
-import 'package:app_movie/dasbor/film_dewasa/dasbor.dart';
 import 'package:app_movie/onboarding/onboarding_view.dart';
-import 'package:app_movie/splash/complete.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,11 +18,11 @@ class _Load extends State<Load> {
   startSplashScreen() async {
     var duration = const Duration(seconds: 5);
     return Timer(duration, () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) {
-          return Complete();
-        }),
-      );
+      // Navigator.of(context).pushReplacement(
+      //   MaterialPageRoute(builder: (_) {
+      //     return CompleteDewasa();
+      //   }),
+      // );
     });
   }
 

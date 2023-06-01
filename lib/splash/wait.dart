@@ -1,7 +1,5 @@
-import 'package:app_movie/dasbor/film_dewasa/dasbor.dart';
 import 'package:app_movie/dasbor/notif.dart';
 import 'package:app_movie/onboarding/onboarding_view.dart';
-import 'package:app_movie/splash/complete.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_svg/flutter_svg.dart';

@@ -3,8 +3,12 @@ import 'dart:io';
 
 import 'package:app_movie/IP/ip.dart';
 import 'package:app_movie/dasbor/film_anak/Home_anak.dart';
-import 'package:app_movie/dasbor/film_dewasa/HomePage.dart';
+import 'package:app_movie/dasbor/film_dewasa/Home_dewasa.dart';
 import 'package:app_movie/dasbor/film_remaja/Home_remaja.dart';
+import 'package:app_movie/onboarding/onboarding_view.dart';
+import 'package:app_movie/splash/recording/SuccessAnak.dart';
+import 'package:app_movie/splash/recording/SuccessDewasa.dart';
+import 'package:app_movie/splash/recording/SuccessRemaja.dart';
 import 'package:app_movie/welcome/welcome.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
@@ -80,8 +84,7 @@ class _RecordingState extends State<Recording> with TickerProviderStateMixin {
         _isRecording = false;
       });
       final file = File(_filePath);
-      EasyLoading.showSuccess("Mohon tunggu sedang mengkonfigurasi..");
-      // Text("");
+      EasyLoading.showSuccess("Mohon tunggu..");
       await _sendAudioToAPI(file);
     } catch (e) {
       print('Terjadi kesalahan saat menghentikan rekaman audio: $e');
@@ -90,7 +93,7 @@ class _RecordingState extends State<Recording> with TickerProviderStateMixin {
 
   Future<void> _sendAudioToAPI(File audioFile) async {
     try {
-      final url = Uri.parse(ip_audio);
+      final url = Uri.parse(ip_universal + 'save-audio');
       final request = http.MultipartRequest('POST', url);
       request.files
           .add(await http.MultipartFile.fromPath('audio', audioFile.path));
@@ -99,23 +102,17 @@ class _RecordingState extends State<Recording> with TickerProviderStateMixin {
       if (response.statusCode == 200) {
         final jsonString = await response.stream.bytesToString();
         final json = jsonDecode(jsonString);
-        // Lakukan sesuatu dengan variabel json
         print(json);
-        if (json['label'] == "Dewasa") {
-          EasyLoading.showSuccess("Halaman Dewasa");
-          print("Halaman Dewasa");
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => HomePageDewasa()));
-        } else if (json['label'] == "Remaja") {
-          await EasyLoading.showSuccess("Halaman Remaja");
-          print("Halaman Remaja");
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => HomePageRemaja()));
-        } else if (json['label'] == "Anak") {
-          await EasyLoading.showSuccess("Halaman Anak");
-          print("Halaman Anak");
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => HomePageAnak()));
+        var label = json['label'];
+        if (label == 'Dewasa') {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => SuccessDewasa()));
+        } else if (label == 'Remaja') {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => SuccessRemaja()));
+        } else {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => SuccessAnak()));
         }
       } else {
         print('Gagal mengirim audio ke API. Status: ${response.statusCode}');

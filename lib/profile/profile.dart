@@ -1,8 +1,7 @@
 // ignore_for_file: unnecessary_new
 
 import 'dart:convert';
-
-import 'package:app_movie/dasbor/film_dewasa/dasbor.dart';
+import 'package:app_movie/dasbor/film_dewasa/Home_dewasa.dart';
 import 'package:app_movie/welcome/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -47,8 +46,8 @@ class _ProfileState extends State<Profile> {
                 alignment: Alignment.topLeft,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => Dasbor()));
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => HomePageDewasa()));
                   },
                   child: Icon(
                     Icons.arrow_back,

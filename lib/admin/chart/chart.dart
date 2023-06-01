@@ -1,3 +1,4 @@
+import 'package:app_movie/IP/ip.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -22,15 +23,14 @@ class _ChartState extends State<Chart> {
       appBar: AppBar(
         title: Text(
           'Grafik Data',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Color.fromARGB(255, 249, 249, 249)),
         ),
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: Color.fromARGB(255, 0, 71, 202),
         toolbarHeight: 60,
       ),
       body: InAppWebView(
         initialUrlRequest: URLRequest(
-          url: Uri.parse(
-              'http://192.168.206.106:8501'), // Ganti dengan URL Streamlit yang sesuai
+          url: Uri.parse('http://192.168.0.105:8501/'),
         ),
         initialOptions: InAppWebViewGroupOptions(
           crossPlatform: InAppWebViewOptions(

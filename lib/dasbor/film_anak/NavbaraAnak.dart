@@ -1,7 +1,6 @@
 import 'package:app_movie/chat/chat_anak.dart.dart';
 import 'package:app_movie/chat/chat_dewasa.dart';
 import 'package:app_movie/dasbor/film_anak/Home_anak.dart';
-import 'package:app_movie/dasbor/film_dewasa/HomePage.dart';
 import 'package:app_movie/history/history.dart';
 import 'package:app_movie/login/login.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +10,7 @@ class NavbarAnak extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 70,
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
         color: Color(0xFFFFFFFF),
         borderRadius: BorderRadius.only(

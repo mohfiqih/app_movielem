@@ -1,17 +1,18 @@
-import 'package:app_movie/dasbor/film_dewasa/HomePage.dart';
-import 'package:app_movie/dasbor/film_dewasa/dasbor.dart';
+import 'package:app_movie/dasbor/film_anak/Home_anak.dart';
+import 'package:app_movie/dasbor/film_dewasa/Home_dewasa.dart';
+import 'package:app_movie/dasbor/film_remaja/Home_remaja.dart';
 import 'package:app_movie/dasbor/notif.dart';
 import 'package:app_movie/onboarding/onboarding_view.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Complete extends StatefulWidget {
+class SuccessAnak extends StatefulWidget {
   @override
-  State<Complete> createState() => _Complete();
+  State<SuccessAnak> createState() => _SuccessAnak();
 }
 
-class _Complete extends State<Complete> {
+class _SuccessAnak extends State<SuccessAnak> {
   @override
   void initState() {
     super.initState();
@@ -19,15 +20,15 @@ class _Complete extends State<Complete> {
   }
 
   startSplashScreen() async {
-    var duration = const Duration(seconds: 1);
+    var duration = const Duration(seconds: 3);
     return Timer(duration, () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) {
-          return HomePageDewasa();
+          return HomePageAnak();
         }),
       );
       NotificationWidget.showNotification(
-          title: "Movielem 😉", body: 'Berhasil Konfigurasi Suara Anda!👍');
+          title: "Movielem 😉", body: 'Suara anda anak-anak!😉');
     });
   }
 

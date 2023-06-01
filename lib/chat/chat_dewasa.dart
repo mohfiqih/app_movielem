@@ -1,8 +1,7 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:app_movie/IP/ip.dart';
-import 'package:app_movie/dasbor/film_dewasa/HomePage.dart';
-import 'package:app_movie/dasbor/film_dewasa/dasbor.dart';
+import 'package:app_movie/dasbor/film_dewasa/Home_dewasa.dart';
 import 'package:app_movie/dasbor/notif.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/foundation.dart';
