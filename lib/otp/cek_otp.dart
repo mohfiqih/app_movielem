@@ -1,5 +1,6 @@
 import 'package:app_movie/IP/ip.dart';
 import 'package:app_movie/admin/admin.dart';
+import 'package:app_movie/opsi/opsi.dart';
 import 'package:app_movie/record/record.dart';
 import 'package:app_movie/splash/complete_otp.dart';
 import 'package:app_movie/splash/onGoing.dart';
@@ -31,16 +32,20 @@ class Cek_otp {
     if (response.statusCode == 200) {
       var json = jsonDecode(response.body);
       var pesan = json[0];
-      if (json[0] == 'Anda masuk sebagai administrator!') {
+      if (json[0] == 'Anda sebagai administrator!') {
         await EasyLoading.showSuccess(json[0]);
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => HalamanAdmin()));
+        NotificationWidget.showNotification(
+            title: "Token Success!", body: 'Token berhasil!');
       } else if (json[0] == 'Berhasil masuk!') {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Complete_OTP()));
+            context, MaterialPageRoute(builder: (context) => Opsi()));
+        NotificationWidget.showNotification(
+            title: "Token Success!", body: 'Token berhasil!');
       }
     } else {
-      await EasyLoading.showError("Gagal! Mohon cek ulang!");
+      await EasyLoading.showError("Token Gagal, cek ulang!");
     }
   }
 }

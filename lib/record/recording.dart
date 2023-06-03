@@ -6,6 +6,7 @@ import 'package:app_movie/dasbor/film_anak/Home_anak.dart';
 import 'package:app_movie/dasbor/film_dewasa/Home_dewasa.dart';
 import 'package:app_movie/dasbor/film_remaja/Home_remaja.dart';
 import 'package:app_movie/onboarding/onboarding_view.dart';
+import 'package:app_movie/opsi/opsi.dart';
 import 'package:app_movie/splash/recording/SuccessAnak.dart';
 import 'package:app_movie/splash/recording/SuccessDewasa.dart';
 import 'package:app_movie/splash/recording/SuccessRemaja.dart';
@@ -139,7 +140,7 @@ class _RecordingState extends State<Recording> with TickerProviderStateMixin {
                 child: GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => Welcome()));
+                        MaterialPageRoute(builder: (context) => Opsi()));
                   },
                   child: Icon(
                     Icons.arrow_back,

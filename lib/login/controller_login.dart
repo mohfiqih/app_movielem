@@ -38,7 +38,7 @@ class HttpService {
 
     var json = jsonDecode(response.body);
     var token = json['token'];
-    // var basic = json['basic'];
+    print(json['message_salah']);
 
     if (response.statusCode == 200) {
       // Jika sudah ada maka tidak dapat masuk
@@ -77,7 +77,7 @@ class HttpService {
         }
       } else {
         print("Gagal login");
-        var gagal_login = "Gagal Login!";
+        var gagal_login = "Password anda salah!";
         EasyLoading.showError(gagal_login);
       }
     } else {
@@ -138,7 +138,7 @@ class Resend {
         }
       } else {
         print("Gagal login");
-        var gagal_login = "Gagal Login!";
+        var gagal_login = "Password anda salah!";
         EasyLoading.showError(gagal_login);
       }
     } else {

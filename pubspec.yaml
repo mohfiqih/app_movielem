@@ -54,6 +54,7 @@ dependencies:
   microphone: ^0.1.0
   flutter_sound: ^8.0.3
   dio: ^5.1.2
+  flare_flutter: ^3.0.2
   # flutter_webview_plugin: ^0.4.0
   # flutter_sound: ^9.2.13
   # audio_picker: ^1.0.0
@@ -81,6 +82,7 @@ flutter:
     - assets/voice/
     - assets/audio/
     - assets/voice/RemajaP.wav
+    - assets/flare/
 
   fonts:
     - family: Poppins

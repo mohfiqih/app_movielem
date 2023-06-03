@@ -8,6 +8,8 @@ import 'package:app_movie/admin/navbar_admin.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:app_movie/dasbor/film_anak/NavbaraAnak.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 
 class HomePageRemaja extends StatefulWidget {
   const HomePageRemaja({super.key});
@@ -19,6 +21,29 @@ class HomePageRemaja extends StatefulWidget {
 class _HomePageRemajaState extends State<HomePageRemaja> {
   // final flutterWebviewPlugin = FlutterWebviewPlugin();
   late InAppWebViewController webviewController;
+
+  late AudioPlayer audioPlayer;
+
+  String audioPath = 'assets/voice/sapaan.mp3';
+
+  @override
+  void initState() {
+    super.initState();
+    playSound();
+  }
+
+  void playSound() async {
+    audioPlayer = AudioPlayer();
+    await audioPlayer.setAsset(audioPath);
+    await audioPlayer.play();
+  }
+
+  @override
+  void dispose() {
+    audioPlayer.stop();
+    audioPlayer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +58,7 @@ class _HomePageRemajaState extends State<HomePageRemaja> {
       ),
       body: InAppWebView(
         initialUrlRequest: URLRequest(
-          url: Uri.parse('http://192.168.206.106:5000/webview'),
+          url: Uri.parse('https://www.p8uh60hx4k.my.id/search/label/Comedy?'),
         ),
         initialOptions: InAppWebViewGroupOptions(
           crossPlatform: InAppWebViewOptions(

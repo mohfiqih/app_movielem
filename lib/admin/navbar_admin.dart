@@ -5,14 +5,16 @@ import 'package:app_movie/admin/history/history.dart';
 import 'package:app_movie/chat/chat_dewasa.dart';
 import 'package:app_movie/history/history.dart';
 import 'package:app_movie/login/login.dart';
+import 'package:app_movie/settings/setting_user_anak.dart';
+import 'package:app_movie/settings/settings_admin.dart';
 import 'package:flutter/material.dart';
 
 class NavbarAdmin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      height: 90,
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       decoration: BoxDecoration(
         color: Color(0xFFFFFFFF),
         borderRadius: BorderRadius.only(
@@ -38,6 +40,9 @@ class NavbarAdmin extends StatelessWidget {
                   size: 28,
                   color: Color.fromARGB(255, 63, 63, 63),
                 ),
+                SizedBox(
+                  height: 3,
+                ),
                 Text("Home"),
               ],
             ),
@@ -56,6 +61,9 @@ class NavbarAdmin extends StatelessWidget {
                   Icons.bookmark_add_outlined,
                   size: 28,
                   color: Color.fromARGB(255, 63, 63, 63),
+                ),
+                SizedBox(
+                  height: 3,
                 ),
                 Text("History"),
               ],
@@ -76,6 +84,9 @@ class NavbarAdmin extends StatelessWidget {
                   size: 28,
                   color: Color.fromARGB(255, 63, 63, 63),
                 ),
+                SizedBox(
+                  height: 3,
+                ),
                 Text("Analisis"),
               ],
             ),
@@ -95,12 +106,34 @@ class NavbarAdmin extends StatelessWidget {
                   size: 28,
                   color: Color.fromARGB(255, 63, 63, 63),
                 ),
+                SizedBox(
+                  height: 3,
+                ),
                 Text("Chart"),
               ],
             ),
           ),
           SizedBox(
             width: 0,
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => SettingsPageAdmin()));
+            },
+            child: Column(
+              children: [
+                Icon(
+                  Icons.settings,
+                  size: 28,
+                  color: Color.fromARGB(255, 63, 63, 63),
+                ),
+                SizedBox(
+                  height: 3,
+                ),
+                Text("Settings"),
+              ],
+            ),
           ),
         ],
       ),

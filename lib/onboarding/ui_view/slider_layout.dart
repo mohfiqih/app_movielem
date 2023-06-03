@@ -10,9 +10,11 @@ import 'package:app_movie/dasbor/film_dewasa/Home_dewasa.dart';
 import 'package:app_movie/dasbor/film_anak/Home_anak.dart';
 import 'package:app_movie/dasbor/film_remaja/Home_remaja.dart';
 import 'package:app_movie/dasbor/notif.dart';
+import 'package:app_movie/opsi/opsi.dart';
 import 'package:app_movie/otp/otp.dart';
 import 'package:app_movie/record/recording.dart';
 import 'package:app_movie/record/rekam.dart';
+import 'package:app_movie/settings/setting_user_dewasa.dart';
 import 'package:app_movie/splash/load.dart';
 import 'package:app_movie/splash/onGoing.dart';
 import 'package:app_movie/otp/skip_/otp_phone/otp_phone.dart';
@@ -108,7 +110,7 @@ class _SliderLayoutViewState extends State<SliderLayoutView> {
                       onTap: () async {
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
-                            builder: (context) => Recording(),
+                            builder: (context) => Welcome(),
                           ),
                         );
                       },

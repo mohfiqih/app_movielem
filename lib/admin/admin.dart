@@ -4,6 +4,7 @@ import 'package:app_movie/admin/history/data/data_admin.dart';
 import 'package:app_movie/admin/history/data/data_gender.dart';
 import 'package:app_movie/admin/navbar_admin.dart';
 import 'package:app_movie/onboarding/onboarding_view.dart';
+import 'package:app_movie/settings/settings_admin.dart';
 import 'package:app_movie/splash/wait.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -26,34 +27,17 @@ class _HalamanAdminState extends State<HalamanAdmin> {
 
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 
-  // late List<Admin> users;
-  // var isLoaded = false;
-
-  // @override
-  // void initState() {
-  //   getRecord();
-  // }
-
-  // getRecord() async {
-  //   users = await AdminApi().AdminAPI();
-  //   if (users != null) {
-  //     setState(() {
-  //       isLoaded = true;
-  //     });
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _drawerKey,
       body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
+        margin: const EdgeInsets.only(top: 60),
         child: SingleChildScrollView(
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -81,6 +65,23 @@ class _HalamanAdminState extends State<HalamanAdmin> {
                         children: [
                           Row(
                             children: [
+                              GestureDetector(
+                                child: Icon(
+                                  Icons.settings,
+                                  color: Color.fromARGB(255, 99, 99, 99),
+                                  size: 30,
+                                ),
+                                onTap: () {
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                      builder: (context) => SettingsPageAdmin(),
+                                    ),
+                                  );
+                                },
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
                               Icon(
                                 Icons.notifications,
                                 color: Color.fromARGB(255, 99, 99, 99),
@@ -436,6 +437,9 @@ class _HalamanAdminState extends State<HalamanAdmin> {
                   ],
                 ),
               ),
+              SizedBox(
+                height: 30,
+              ),
               Container(
                 height: 60,
                 padding: EdgeInsets.all(10),
@@ -471,7 +475,7 @@ class _HalamanAdminState extends State<HalamanAdmin> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 40,
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -493,7 +497,7 @@ class _HalamanAdminState extends State<HalamanAdmin> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 50,
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -759,60 +763,8 @@ class _HalamanAdminState extends State<HalamanAdmin> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 20,
               ),
-
-              // Container(
-              //   margin: EdgeInsets.symmetric(horizontal: 20),
-              //   decoration: BoxDecoration(
-              //     color: Color.fromRGBO(246, 246, 247, 1),
-              //     borderRadius: BorderRadius.circular(10),
-              //     boxShadow: [
-              //       BoxShadow(
-              //         color:
-              //             Color.fromARGB(255, 150, 150, 150).withOpacity(0.5),
-              //         spreadRadius: 2,
-              //         blurRadius: 6,
-              //       ),
-              //     ],
-              //   ),
-              //   child: Column(
-              //     children: [
-              //       SizedBox(
-              //         height: 20,
-              //       ),
-              //       Text(
-              //         "Tabel Data Admin",
-              //         style: TextStyle(
-              //             color: Color.fromARGB(255, 12, 12, 12), fontSize: 16),
-              //       ),
-              //       SizedBox(
-              //         height: 10,
-              //       ),
-              //       SingleChildScrollView(
-              //         scrollDirection: Axis.horizontal,
-              //         child: DataTable(
-              //           columns: <DataColumn>[
-              //             DataColumn(label: Text("Email")),
-              //             DataColumn(label: Text("Nama")),
-              //             DataColumn(label: Text("Level")),
-              //             DataColumn(label: Text("Status")),
-              //           ],
-              //           rows: <DataRow>[
-              //             DataRow(
-              //               cells: <DataCell>[
-              //                 DataCell(Text("1")),
-              //                 DataCell(Text("Moh. Fiqih")),
-              //                 DataCell(Text("Administrator")),
-              //                 DataCell(Text("Valid")),
-              //               ],
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
             ],
           ),
         ),

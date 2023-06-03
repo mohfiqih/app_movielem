@@ -1,16 +1,18 @@
 import 'package:app_movie/chat/chat_dewasa.dart';
 import 'package:app_movie/chat/chat_remaja.dart';
+import 'package:app_movie/dasbor/baca/BacaRemaja.dart';
 import 'package:app_movie/dasbor/film_remaja/Home_remaja.dart';
 import 'package:app_movie/history/history.dart';
 import 'package:app_movie/login/login.dart';
+import 'package:app_movie/settings/setting_user_remaja.dart';
 import 'package:flutter/material.dart';
 
 class NavbarRemaja extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70,
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      height: 80,
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       decoration: BoxDecoration(
         color: Color(0xFFFFFFFF),
         borderRadius: BorderRadius.only(
@@ -36,6 +38,9 @@ class NavbarRemaja extends StatelessWidget {
                   size: 28,
                   color: Color.fromARGB(255, 63, 63, 63),
                 ),
+                SizedBox(
+                  height: 3,
+                ),
                 Text("Home"),
               ],
             ),
@@ -45,17 +50,20 @@ class NavbarRemaja extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              // Navigator.pushReplacement(
-              //     context, MaterialPageRoute(builder: (context) => Chat()));
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => BacaRemaja()));
             },
             child: Column(
               children: [
                 Icon(
-                  Icons.filter_drama,
+                  Icons.bookmark_add_outlined,
                   size: 28,
                   color: Color.fromARGB(255, 63, 63, 63),
                 ),
-                Text("Film"),
+                SizedBox(
+                  height: 3,
+                ),
+                Text("Baca"),
               ],
             ),
           ),
@@ -74,6 +82,9 @@ class NavbarRemaja extends StatelessWidget {
                   size: 28,
                   color: Color.fromARGB(255, 63, 63, 63),
                 ),
+                SizedBox(
+                  height: 3,
+                ),
                 Text("Chat"),
               ],
             ),
@@ -83,8 +94,10 @@ class NavbarRemaja extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              // Navigator.pushReplacement(
-              //     context, MaterialPageRoute(builder: (context) => Chart()));
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SettingsPageRemaja()));
             },
             child: Column(
               children: [
@@ -92,6 +105,9 @@ class NavbarRemaja extends StatelessWidget {
                   Icons.settings,
                   size: 28,
                   color: Color.fromARGB(255, 63, 63, 63),
+                ),
+                SizedBox(
+                  height: 3,
                 ),
                 Text("Setting"),
               ],

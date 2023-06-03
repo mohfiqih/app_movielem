@@ -1,15 +1,21 @@
 import 'package:app_movie/chat/chat_dewasa.dart';
+import 'package:app_movie/chat/chat_remaja.dart';
+import 'package:app_movie/dasbor/baca/BacaDewasa.dart';
+import 'package:app_movie/dasbor/baca/BacaRemaja.dart';
 import 'package:app_movie/dasbor/film_dewasa/Home_dewasa.dart';
+import 'package:app_movie/dasbor/film_remaja/Home_remaja.dart';
 import 'package:app_movie/history/history.dart';
 import 'package:app_movie/login/login.dart';
+import 'package:app_movie/settings/setting_user_dewasa.dart';
+import 'package:app_movie/settings/setting_user_remaja.dart';
 import 'package:flutter/material.dart';
 
 class NavbarDewasa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70,
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      height: 80,
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       decoration: BoxDecoration(
         color: Color(0xFFFFFFFF),
         borderRadius: BorderRadius.only(
@@ -35,6 +41,9 @@ class NavbarDewasa extends StatelessWidget {
                   size: 28,
                   color: Color.fromARGB(255, 63, 63, 63),
                 ),
+                SizedBox(
+                  height: 3,
+                ),
                 Text("Home"),
               ],
             ),
@@ -44,17 +53,20 @@ class NavbarDewasa extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              // Navigator.pushReplacement(
-              //     context, MaterialPageRoute(builder: (context) => Chat()));
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => BacaDewasa()));
             },
             child: Column(
               children: [
                 Icon(
-                  Icons.filter_drama,
+                  Icons.bookmark_add_outlined,
                   size: 28,
                   color: Color.fromARGB(255, 63, 63, 63),
                 ),
-                Text("Film"),
+                SizedBox(
+                  height: 3,
+                ),
+                Text("Baca"),
               ],
             ),
           ),
@@ -73,6 +85,9 @@ class NavbarDewasa extends StatelessWidget {
                   size: 28,
                   color: Color.fromARGB(255, 63, 63, 63),
                 ),
+                SizedBox(
+                  height: 3,
+                ),
                 Text("Chat"),
               ],
             ),
@@ -82,8 +97,10 @@ class NavbarDewasa extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              // Navigator.pushReplacement(
-              //     context, MaterialPageRoute(builder: (context) => Chart()));
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SettingsPageDewasa()));
             },
             child: Column(
               children: [
@@ -91,6 +108,9 @@ class NavbarDewasa extends StatelessWidget {
                   Icons.settings,
                   size: 28,
                   color: Color.fromARGB(255, 63, 63, 63),
+                ),
+                SizedBox(
+                  height: 3,
                 ),
                 Text("Setting"),
               ],

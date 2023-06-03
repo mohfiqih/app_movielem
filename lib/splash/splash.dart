@@ -36,12 +36,12 @@ class _Splash extends State<Splash> {
             SizedBox(height: 260),
             Center(
               child: Image(
-                image: AssetImage('assets/images/splash/onGoing.gif'),
-                height: 400.0,
-                width: 400.0,
+                image: AssetImage('assets/images/splash/wall_splash.png'),
+                height: 350.0,
+                width: 350.0,
               ),
             ),
-            SizedBox(height: 80),
+            SizedBox(height: 120),
             Center(
               child: Image(
                 image: AssetImage('assets/images/splash/loading.gif'),
