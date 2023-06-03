@@ -18,10 +18,8 @@ class Reset extends StatefulWidget {
 }
 
 class _ResetState extends State<Reset> {
-  late String? email, password;
+  late String? reset_email, password;
   final _formState = GlobalKey<FormState>();
-
-  final _formStateResend = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +50,7 @@ class _ResetState extends State<Reset> {
                 ),
               ),
               SizedBox(
-                height: 40,
+                height: 70,
               ),
               Row(
                 children: [
@@ -60,7 +58,7 @@ class _ResetState extends State<Reset> {
                   Expanded(
                     flex: 10,
                     child: SvgPicture.asset(
-                      "assets/images/verify.svg",
+                      "assets/images/log/reset.svg",
                       height: 220,
                     ),
                   ),
@@ -89,7 +87,7 @@ class _ResetState extends State<Reset> {
                 textAlign: TextAlign.center,
               ),
               SizedBox(
-                height: 28,
+                height: 20,
               ),
               SizedBox(height: 10),
               Form(
@@ -136,7 +134,7 @@ class _ResetState extends State<Reset> {
                                 ),
                                 onChanged: (value) {
                                   setState(() {
-                                    email = value;
+                                    reset_email = value;
                                   });
                                 },
                                 validator: ((value) {
@@ -156,8 +154,8 @@ class _ResetState extends State<Reset> {
                         if (_formState.currentState!.validate()) {
                           // print("Validation Success");
                           // print("email : " + email!);
-                          print("email : " + email!);
-                          await Reset_pw.send_reset(email, context);
+                          print("email : " + reset_email!);
+                          await Reset_pw.send_reset(reset_email, context);
                         } else {
                           print("Validation Error");
                         }

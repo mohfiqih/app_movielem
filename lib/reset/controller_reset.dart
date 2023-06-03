@@ -21,11 +21,11 @@ class Reset_pw {
 
   static var _reset = Uri.parse(ip_universal + 'send-reset');
 
-  static send_reset(email, context) async {
+  static send_reset(reset_email, context) async {
     http.Response response = await _clientreset.post(
       _reset,
       body: {
-        "email": email,
+        "email": reset_email,
       },
     );
 
@@ -35,14 +35,14 @@ class Reset_pw {
 
     if (response.statusCode == 200) {
       // Jika sudah ada maka tidak dapat masuk
-      if (json['message'] == 'Berhasil Kirim Link!') {
+      if (json['message'] == 'Link reset berhasil dikirim!') {
         await EasyLoading.showSuccess(json['message']);
 
         try {
           var userEmail = 'mfiqiherinsyah90@gmail.com';
           final message = Message()
-            ..from = Address(userEmail, 'Link Reset Password 🔓')
-            ..recipients.add(email)
+            ..from = Address(userEmail, 'Reset Password')
+            ..recipients.add(reset_email)
             ..subject = 'Reset Password'
             ..html = "<h3>Link Reset Password anda : </h3>\n<p>${link}</p>";
 
@@ -51,8 +51,8 @@ class Reset_pw {
           try {
             final sendReport = await send(message, smtpServer);
             print('Link berhasil dikirim: ' + sendReport.toString());
-            // Navigator.pushReplacement(
-            //     context, MaterialPageRoute(builder: (context) => Welcome()));
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => Welcome()));
             NotificationWidget.showNotification(
                 title: "Reset Password",
                 body: 'Link Reset berhasil dikirim ke email!');
