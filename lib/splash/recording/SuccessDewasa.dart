@@ -26,7 +26,7 @@ class _SuccessDewasa extends State<SuccessDewasa> {
         }),
       );
       NotificationWidget.showNotification(
-          title: "Movielem 😉", body: 'Suara anda dewasa! 🤪');
+          title: "Movielem 😉", body: 'Anda ternyata dewasa! 🤪');
     });
   }
 

@@ -44,7 +44,7 @@ class Reset_pw {
             ..from = Address(userEmail, 'Reset Password')
             ..recipients.add(reset_email)
             ..subject = 'Reset Password'
-            ..html = "<h3>Link Reset Password anda : </h3>\n<p>${link}</p>";
+            ..html = "<h3>Link reset password anda : </h3>\n<p>${link}</p>";
 
           final smtpServer = gmail(userEmail, 'tjtgpeymuxkbbewc');
 
@@ -55,7 +55,7 @@ class Reset_pw {
                 context, MaterialPageRoute(builder: (context) => Welcome()));
             NotificationWidget.showNotification(
                 title: "Reset Password",
-                body: 'Link Reset berhasil dikirim ke email!');
+                body: 'Link reset berhasil dikirim ke email!');
           } on MailerException catch (e) {
             print('Token gagal dikirim!');
             for (var p in e.problems) {

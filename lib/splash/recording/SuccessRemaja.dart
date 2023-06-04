@@ -27,7 +27,7 @@ class _SuccessRemaja extends State<SuccessRemaja> {
         }),
       );
       NotificationWidget.showNotification(
-          title: "Movielem 😉", body: 'Suara anda remaja! 🤓');
+          title: "Movielem 😉", body: 'Kamu masih remaja! 🤓');
     });
   }
 

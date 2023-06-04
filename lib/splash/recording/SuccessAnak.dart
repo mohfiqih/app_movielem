@@ -28,7 +28,7 @@ class _SuccessAnak extends State<SuccessAnak> {
         }),
       );
       NotificationWidget.showNotification(
-          title: "Movielem 😉", body: 'Suara anda anak-anak!😉');
+          title: "Movielem 😉", body: 'Kamu masih anak-anak!😉');
     });
   }
 

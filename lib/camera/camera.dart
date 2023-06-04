@@ -1,97 +1,261 @@
-import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
-import 'dart:typed_data';
+import 'package:app_movie/IP/ip.dart';
+import 'package:app_movie/opsi/opsi.dart';
+import 'package:app_movie/splash/recording/SuccessAnak.dart';
+import 'package:app_movie/splash/recording/SuccessDewasa.dart';
+import 'package:app_movie/splash/recording/SuccessRemaja.dart';
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 
-class CameraScreen extends StatefulWidget {
+class Kamera extends StatefulWidget {
   @override
-  _CameraScreenState createState() => _CameraScreenState();
+  _KameraState createState() => _KameraState();
 }
 
-class _CameraScreenState extends State<CameraScreen> {
-  late CameraController _controller;
-  late Future<void> _initializeControllerFuture;
-  late File selectedImage; // Tambahkan variabel selectedImage
+class _KameraState extends State<Kamera> {
+  File? _image;
 
-  @override
-  void initState() {
-    super.initState();
-    _initializeCamera();
-  }
+  // Future<void> _getImageFromCamera() async {
+  //   final image = await ImagePicker().getImage(source: ImageSource.camera);
 
-  Future<void> _initializeCamera() async {
-    final cameras = await availableCameras();
-    final firstCamera = cameras.first;
+  //   setState(() {
+  //     _image = File(image!.path);
+  //   });
+  // }
 
-    _controller = CameraController(firstCamera, ResolutionPreset.medium);
-    _initializeControllerFuture = _controller.initialize();
-  }
-
-  Future<void> _sendImageToAPI(File imageFile) async {
-    final uri = Uri.parse(
-        'http://example.com/upload-image'); // Ganti dengan URL endpoint Flask API Anda
-
-    final request = http.MultipartRequest('POST', uri);
-    request.files.add(
-      http.MultipartFile(
-        'image',
-        imageFile.readAsBytes().asStream(),
-        imageFile.lengthSync(),
-        filename: 'image.jpg',
-      ),
-    );
-
-    final response = await request.send();
-    if (response.statusCode == 200) {
-      print('Image berhasil diunggah!');
-    } else {
-      print('Gagal mengunggah gambar. Status Code: ${response.statusCode}');
-    }
-  }
-
-  Future<void> _captureImage() async {
+  Future<void> _uploadImage() async {
     try {
-      await _initializeControllerFuture;
-      final imageFile = await _controller.takePicture();
-      setState(() {
-        selectedImage = File(imageFile.path);
-      });
+      if (_image == null) {
+        return;
+      }
+
+      final url = Uri.parse(ip_universal + 'model-wajah');
+      final request = http.MultipartRequest('POST', url);
+      request.files.add(
+        await http.MultipartFile.fromPath('file', _image!.path),
+      );
+
+      final response = await request.send();
+      final jsonString = await response.stream.bytesToString();
+      final json = jsonDecode(jsonString);
+
+      if (response.statusCode == 200) {
+        var label = json['label'];
+        print(label);
+        if (label == 'Dewasa') {
+          EasyLoading.showSuccess("Berhasil!");
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => SuccessDewasa()));
+        } else if (label == 'Remaja') {
+          EasyLoading.showSuccess("Berhasil!");
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => SuccessRemaja()));
+        } else {
+          EasyLoading.showSuccess("Berhasil!");
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => SuccessAnak()));
+        }
+      } else {
+        print('Gagal mengirim gambar.');
+        EasyLoading.showError("Gagal mengirim gambar!");
+      }
     } catch (e) {
-      print('Error capturing image: $e');
+      print('Terjadi kesalahan saat mengirim audio ke API: $e');
     }
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+  Future fotoKamera() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? imagePicked =
+        await _picker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      _image = File(imagePicked!.path);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Camera Screen'),
+      body: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 30,
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => Opsi()));
+                  },
+                  child: Icon(
+                    Icons.arrow_back,
+                    size: 32,
+                    color: Colors.black54,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Center(
+                  child: Text(
+                    "Hi, Movielas",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Center(
+                child: Text('---------------------------------------------',
+                    style: TextStyle(fontSize: 3), textAlign: TextAlign.center),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Center(
+                child: Text(
+                    'Scan wajah anda terlebih dahulu\n Klik open your camera untuk membuka kamera',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                    textAlign: TextAlign.center),
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  width: 350,
+                  height: 550,
+                  margin: EdgeInsets.only(left: 0),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFFFFFF),
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color:
+                            Color.fromARGB(255, 193, 193, 193).withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 6,
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 20),
+                      if (_image == null)
+                        GestureDetector(
+                          child: Image.asset(
+                            "assets/images/cam.png",
+                            width: 350,
+                            height: 450,
+                            fit: BoxFit.cover,
+                          ),
+                          onTap: fotoKamera,
+                        ),
+                      if (_image != null)
+                        ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
+                          ),
+                          child: Image.file(
+                            _image!,
+                            width: 350,
+                            height: 440,
+                          ),
+                        ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 8,
+                          horizontal: 5,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 10),
+                            Row(
+                              children: [
+                                SizedBox(width: 20),
+                                Icon(
+                                  Icons.image,
+                                  size: 35,
+                                  color: Color.fromARGB(255, 26, 25, 25),
+                                ),
+                                SizedBox(width: 15),
+                                Text(
+                                  "Preview",
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(width: 120),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color.fromARGB(255, 23, 23, 23),
+                                    textStyle: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                  ),
+                                  onPressed: _uploadImage,
+                                  child: Text("POST"),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
-      body: FutureBuilder<void>(
-        future: _initializeControllerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return selectedImage != null
-                ? Image.file(selectedImage)
-                : CameraPreview(_controller);
-          } else {
-            return Center(child: CircularProgressIndicator());
-          }
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _captureImage,
-        child: Icon(Icons.camera),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // floatingActionButton: Container(
+      //   margin: EdgeInsets.only(left: 50, bottom: 30),
+      //   child: Row(
+      //     children: [
+      //       SizedBox(
+      //         width: 110,
+      //       ),
+      //       FloatingActionButton(
+      //         onPressed: fotoKamera,
+      //         tooltip: 'Kamera',
+      //         child: const Icon(Icons.camera_alt_outlined),
+      //         backgroundColor: Color.fromARGB(255, 0, 120, 167),
+      //       ),
+      //       SizedBox(
+      //         width: 25,
+      //       ),
+      //       FloatingActionButton(
+      //         onPressed: _uploadImage,
+      //         tooltip: 'Send',
+      //         child: const Icon(Icons.send),
+      //         backgroundColor: Color.fromARGB(255, 0, 120, 167),
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

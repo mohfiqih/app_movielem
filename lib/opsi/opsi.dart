@@ -1,3 +1,5 @@
+import 'package:app_movie/camera/camera.dart';
+import 'package:app_movie/onboarding/onboarding_view.dart';
 import 'package:app_movie/record/recording.dart';
 import 'package:app_movie/splash/recording/SuccessAnak.dart';
 import 'package:flutter/material.dart';
@@ -23,22 +25,22 @@ class _OpsiState extends State<Opsi> {
           child: Column(
             children: [
               SizedBox(
-                height: 50,
+                height: 40,
               ),
-              // Align(
-              //   alignment: Alignment.topLeft,
-              //   child: GestureDetector(
-              //     onTap: () {
-              //       // Navigator.of(context).pushReplacement(
-              //       //     MaterialPageRoute(builder: (context) => Welcome()));
-              //     },
-              //     child: Icon(
-              //       Icons.arrow_back,
-              //       size: 32,
-              //       color: Colors.black54,
-              //     ),
-              //   ),
-              // ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => Onboarding()));
+                  },
+                  child: Icon(
+                    Icons.arrow_back,
+                    size: 32,
+                    color: Colors.black54,
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Center(
@@ -227,7 +229,13 @@ class _OpsiState extends State<Opsi> {
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                        builder: (context) => Kamera(),
+                                      ),
+                                    );
+                                  },
                                   child: Text("GO"),
                                 ),
                               ],

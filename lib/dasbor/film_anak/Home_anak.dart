@@ -28,7 +28,9 @@ class _HomePageAnakState extends State<HomePageAnak> {
   @override
   void initState() {
     super.initState();
-    playSound();
+    Future.delayed(Duration(milliseconds: 3000), () {
+      playSound();
+    });
   }
 
   void playSound() async {
