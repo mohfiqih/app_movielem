@@ -21,28 +21,28 @@ class _HomePageAnakState extends State<HomePageAnak> {
   // final flutterWebviewPlugin = FlutterWebviewPlugin();
   late InAppWebViewController webviewController;
 
-  late AudioPlayer audioPlayer;
+  // late AudioPlayer audioPlayer;
 
-  String audioPath = 'assets/voice/sapaan.mp3';
+  // String audioPath = 'assets/voice/sapaan.mp3';
 
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration(milliseconds: 3000), () {
-      playSound();
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   Future.delayed(Duration(milliseconds: 3000), () {
+  //     playSound();
+  //   });
+  // }
 
-  void playSound() async {
-    audioPlayer = AudioPlayer();
-    await audioPlayer.setAsset(audioPath);
-    await audioPlayer.play();
-  }
+  // void playSound() async {
+  //   audioPlayer = AudioPlayer();
+  //   await audioPlayer.setAsset(audioPath);
+  //   await audioPlayer.play();
+  // }
 
   @override
   void dispose() {
-    audioPlayer.stop();
-    audioPlayer.dispose();
+    // audioPlayer.stop();
+    // audioPlayer.dispose();
     super.dispose();
   }
 

@@ -6,6 +6,7 @@ import 'package:app_movie/admin/history/history.dart';
 import 'package:app_movie/admin/history/skip_/model/model_admin.dart';
 import 'package:app_movie/audio/audio.dart';
 import 'package:app_movie/camera/camera.dart';
+import 'package:app_movie/camera/live_coba.dart';
 import 'package:app_movie/dasbor/film_dewasa/Home_dewasa.dart';
 import 'package:app_movie/dasbor/film_anak/Home_anak.dart';
 import 'package:app_movie/dasbor/film_remaja/Home_remaja.dart';
@@ -103,7 +104,7 @@ class _SliderLayoutViewState extends State<SliderLayoutView> {
                       child: Text(
                         'Skip',
                         style: TextStyle(
-                            color: Color.fromARGB(255, 0, 120, 167),
+                            color: Color(0xFF0078A7),
                             fontWeight: FontWeight.bold,
                             fontSize: 15),
                       ),

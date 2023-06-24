@@ -26,21 +26,4 @@ class MyApp extends StatelessWidget {
       builder: EasyLoading.init(),
     );
   }
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Consumer<ThemeModel>(
-  //     builder: (context, themeModel, _) => ThemeProvider(
-  //       themeMode: themeModel.themeMode,
-  //       child: MaterialApp(
-  //         debugShowCheckedModeBanner: false,
-  //         themeMode: ThemeMode.system,
-  //         darkTheme: ThemeData.dark(),
-  //         theme: ThemeData.light(),
-  //         title: 'Movielem',
-  //         home: Splash(),
-  //         builder: EasyLoading.init(),
-  //       ),
-  //     ),
-  //   );
-  // }
 }

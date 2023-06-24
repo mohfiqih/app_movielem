@@ -7,6 +7,9 @@ import 'package:app_movie/dasbor/film_dewasa/Home_dewasa.dart';
 import 'package:app_movie/dasbor/film_remaja/Home_remaja.dart';
 import 'package:app_movie/onboarding/onboarding_view.dart';
 import 'package:app_movie/opsi/opsi.dart';
+import 'package:app_movie/splash/recording/SplashKonfigurasi%20Remaja.dart';
+import 'package:app_movie/splash/recording/SplashKonfigurasiAnak.dart';
+import 'package:app_movie/splash/recording/SplashKonfigurasiDewasa.dart';
 import 'package:app_movie/splash/recording/SuccessAnak.dart';
 import 'package:app_movie/splash/recording/SuccessDewasa.dart';
 import 'package:app_movie/splash/recording/SuccessRemaja.dart';
@@ -19,6 +22,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
+import 'package:uuid/uuid.dart';
 
 class Recording extends StatefulWidget {
   @override
@@ -57,13 +61,10 @@ class _RecordingState extends State<Recording> with TickerProviderStateMixin {
         _isRecording = true;
       });
 
-      final int totalFiles = 10000;
-      int i = 1;
-      i <= totalFiles;
-      i++;
-
       final tempDir = await getTemporaryDirectory();
-      final filePath = '${tempDir.path}/recording$i' + '.wav';
+      final uuid = Uuid();
+      final fileName = '${uuid.v4()}.wav';
+      final filePath = '${tempDir.path}/$fileName';
 
       await _recorder?.startRecorder(
         toFile: filePath,
@@ -85,7 +86,10 @@ class _RecordingState extends State<Recording> with TickerProviderStateMixin {
         _isRecording = false;
       });
       final file = File(_filePath);
-      EasyLoading.showSuccess("Mohon tunggu..");
+      EasyLoading.showSuccess(
+        "Success!",
+        duration: Duration(seconds: 1),
+      );
       await _sendAudioToAPI(file);
     } catch (e) {
       print('Terjadi kesalahan saat menghentikan rekaman audio: $e');
@@ -94,7 +98,7 @@ class _RecordingState extends State<Recording> with TickerProviderStateMixin {
 
   Future<void> _sendAudioToAPI(File audioFile) async {
     try {
-      final url = Uri.parse(ip_universal + 'save-audio');
+      final url = Uri.parse('http://192.168.30.106:5000/save-audio');
       final request = http.MultipartRequest('POST', url);
       request.files
           .add(await http.MultipartFile.fromPath('audio', audioFile.path));
@@ -106,14 +110,18 @@ class _RecordingState extends State<Recording> with TickerProviderStateMixin {
         print(json);
         var label = json['label'];
         if (label == 'Dewasa') {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => SuccessDewasa()));
-        } else if (label == 'Remaja') {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => SuccessRemaja()));
-        } else {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SuccessAnak()));
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SplashKonfigurasiDewasa()));
+        } else if (label == 'Remaja') {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SplashKonfigurasiRemaja()));
+        } else {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => SplashKonfigurasiAnak()));
         }
       } else {
         print('Gagal mengirim audio ke API. Status: ${response.statusCode}');

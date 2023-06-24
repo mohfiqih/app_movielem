@@ -1,5 +1,7 @@
 import 'package:app_movie/admin/history/data/data_admin.dart';
 import 'package:app_movie/admin/history/data/data_gender.dart';
+import 'package:app_movie/admin/history/data_gender/view_data_gender.dart';
+import 'package:app_movie/admin/history/data_user/view_data_user.dart';
 import 'package:app_movie/admin/navbar_admin.dart';
 import 'package:app_movie/register/controller_register.dart';
 import 'package:flutter/material.dart';
@@ -111,7 +113,7 @@ class _MenuHistoryState extends State<MenuHistory> {
                   height: 90,
                   margin: EdgeInsets.only(left: 5),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 0, 71, 202),
+                    color: Color.fromARGB(255, 0, 120, 167),
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
@@ -177,7 +179,7 @@ class _MenuHistoryState extends State<MenuHistory> {
                   height: 90,
                   margin: EdgeInsets.only(left: 5),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 0, 71, 202),
+                    color: Color.fromARGB(255, 0, 120, 167),
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
@@ -534,7 +536,7 @@ class _MenuHistoryState extends State<MenuHistory> {
                                       width: double.infinity,
                                       decoration: BoxDecoration(
                                           color:
-                                              Color.fromARGB(255, 0, 71, 202),
+                                              Color.fromARGB(255, 0, 120, 167),
                                           borderRadius:
                                               BorderRadius.circular(15)),
                                     ),
@@ -554,7 +556,7 @@ class _MenuHistoryState extends State<MenuHistory> {
           },
           tooltip: 'Tambah',
           child: const Icon(Icons.add),
-          backgroundColor: Color.fromARGB(255, 0, 71, 202),
+          backgroundColor: Color.fromARGB(255, 0, 120, 167),
         ),
       ),
       bottomNavigationBar: NavbarAdmin(),

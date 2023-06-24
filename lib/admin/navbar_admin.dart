@@ -1,7 +1,9 @@
 import 'package:app_movie/admin/analisis/analisis.dart';
 import 'package:app_movie/admin/admin.dart';
 import 'package:app_movie/admin/chart/chart.dart';
+import 'package:app_movie/admin/chart/newchart.dart';
 import 'package:app_movie/admin/history/history.dart';
+import 'package:app_movie/camera/live.dart';
 import 'package:app_movie/chat/chat_dewasa.dart';
 import 'package:app_movie/history/history.dart';
 import 'package:app_movie/login/login.dart';
@@ -75,7 +77,11 @@ class NavbarAdmin extends StatelessWidget {
           InkWell(
             onTap: () {
               Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => Analisis()));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Analisis(),
+                ),
+              );
             },
             child: Column(
               children: [
@@ -97,7 +103,7 @@ class NavbarAdmin extends StatelessWidget {
           InkWell(
             onTap: () {
               Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => Chart()));
+                  context, MaterialPageRoute(builder: (context) => NewChart()));
             },
             child: Column(
               children: [

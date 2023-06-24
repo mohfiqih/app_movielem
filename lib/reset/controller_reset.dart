@@ -44,7 +44,8 @@ class Reset_pw {
             ..from = Address(userEmail, 'Reset Password')
             ..recipients.add(reset_email)
             ..subject = 'Reset Password'
-            ..html = "<h3>Link reset password anda : </h3>\n<p>${link}</p>";
+            ..html =
+                "<h3>Link reset password anda : </h3>\n<p>${ip_universal + link}</p>";
 
           final smtpServer = gmail(userEmail, 'tjtgpeymuxkbbewc');
 

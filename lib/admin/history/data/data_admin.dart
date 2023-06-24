@@ -1,4 +1,5 @@
 import 'package:app_movie/IP/ip.dart';
+import 'package:app_movie/admin/history/history.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -22,12 +23,17 @@ class _DataAdminState extends State<DataAdmin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Data Users',
-          style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+        title: Text('Data User'),
+        toolbarHeight: 65,
+        centerTitle: true,
+        backgroundColor: Color.fromARGB(255, 0, 120, 167),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => MenuHistory()));
+          },
         ),
-        backgroundColor: Color.fromARGB(255, 0, 71, 202),
-        toolbarHeight: 60,
       ),
       body: InAppWebView(
         initialUrlRequest: URLRequest(

@@ -32,6 +32,11 @@ class _KameraState extends State<Kamera> {
         return;
       }
 
+      EasyLoading.showSuccess(
+        "Mohon tunggu\nsedang mengkonfigurasi..",
+        duration: Duration(seconds: 3),
+      );
+
       final url = Uri.parse(ip_universal + 'model-wajah');
       final request = http.MultipartRequest('POST', url);
       request.files.add(
@@ -46,15 +51,15 @@ class _KameraState extends State<Kamera> {
         var label = json['label'];
         print(label);
         if (label == 'Dewasa') {
-          EasyLoading.showSuccess("Berhasil!");
+          // EasyLoading.showSuccess("Berhasil!");
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => SuccessDewasa()));
         } else if (label == 'Remaja') {
-          EasyLoading.showSuccess("Berhasil!");
+          // EasyLoading.showSuccess("Berhasil!");
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => SuccessRemaja()));
         } else {
-          EasyLoading.showSuccess("Berhasil!");
+          // EasyLoading.showSuccess("Berhasil!");
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => SuccessAnak()));
         }

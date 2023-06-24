@@ -26,12 +26,12 @@ class _AnalisisState extends State<Analisis> {
           'Analisis',
           style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
         ),
-        backgroundColor: Color.fromARGB(255, 0, 71, 202),
+        backgroundColor: Color.fromARGB(255, 0, 120, 167),
         toolbarHeight: 60,
       ),
       body: InAppWebView(
         initialUrlRequest: URLRequest(
-          url: Uri.parse('http://192.168.0.105:8502/'),
+          url: Uri.parse(ip_analisis),
         ),
         initialOptions: InAppWebViewGroupOptions(
           crossPlatform: InAppWebViewOptions(

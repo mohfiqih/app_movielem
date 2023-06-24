@@ -30,7 +30,7 @@ class _ChartState extends State<Chart> {
       ),
       body: InAppWebView(
         initialUrlRequest: URLRequest(
-          url: Uri.parse('http://192.168.0.105:8501/'),
+          url: Uri.parse(ip_grafik),
         ),
         initialOptions: InAppWebViewGroupOptions(
           crossPlatform: InAppWebViewOptions(

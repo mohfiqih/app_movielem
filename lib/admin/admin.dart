@@ -312,7 +312,7 @@ class _HalamanAdminState extends State<HalamanAdmin> {
                                                                                       height: 60,
                                                                                       width: double.infinity,
                                                                                       decoration: BoxDecoration(
-                                                                                        color: Color.fromARGB(255, 0, 71, 202),
+                                                                                        color: Color.fromARGB(255, 0, 120, 167),
                                                                                         borderRadius: BorderRadius.circular(15),
                                                                                       ),
                                                                                     ),
@@ -407,8 +407,8 @@ class _HalamanAdminState extends State<HalamanAdmin> {
                                                                   .fromARGB(
                                                                       255,
                                                                       0,
-                                                                      71,
-                                                                      202),
+                                                                      120,
+                                                                      167),
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
@@ -513,7 +513,7 @@ class _HalamanAdminState extends State<HalamanAdmin> {
                         height: 110,
                         margin: EdgeInsets.only(left: 5),
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(4, 119, 252, 1),
+                          color: Color.fromARGB(255, 0, 120, 167),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -577,7 +577,7 @@ class _HalamanAdminState extends State<HalamanAdmin> {
                         height: 110,
                         margin: EdgeInsets.only(left: 15),
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(87, 5, 218, 1),
+                          color: Color.fromARGB(255, 0, 120, 167),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -641,7 +641,7 @@ class _HalamanAdminState extends State<HalamanAdmin> {
                         height: 110,
                         margin: EdgeInsets.only(left: 15),
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(111, 14, 196, 1),
+                          color: Color.fromARGB(255, 0, 120, 167),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
@@ -709,7 +709,7 @@ class _HalamanAdminState extends State<HalamanAdmin> {
                   height: 90,
                   margin: EdgeInsets.only(left: 5),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 0, 71, 202),
+                    color: Color.fromARGB(255, 0, 120, 167),
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(

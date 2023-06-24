@@ -1,6 +1,9 @@
+import 'package:app_movie/admin/admin.dart';
 import 'package:app_movie/admin/navbar_admin.dart';
+import 'package:app_movie/admin/reset_admin.dart';
 import 'package:app_movie/dasbor/film_anak/NavbaraAnak.dart';
 import 'package:app_movie/onboarding/onboarding_view.dart';
+import 'package:app_movie/reset/reset.dart';
 import 'package:app_movie/splash/wait.dart';
 import 'package:flutter/material.dart';
 
@@ -10,8 +13,16 @@ class SettingsPageAdmin extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Settings'),
-        backgroundColor: Color.fromARGB(255, 0, 71, 202),
-        toolbarHeight: 60,
+        toolbarHeight: 65,
+        centerTitle: true,
+        backgroundColor: Color.fromARGB(255, 0, 120, 167),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => HalamanAdmin()));
+          },
+        ),
       ),
       body: ListView(
         children: [
@@ -31,7 +42,7 @@ class SettingsPageAdmin extends StatelessWidget {
             trailing: Switch(
               value: true,
               onChanged: (value) {},
-              activeColor: Color.fromARGB(255, 0, 71, 202),
+              activeColor: Color.fromARGB(255, 0, 120, 167),
             ),
           ),
           ListTile(
@@ -106,12 +117,16 @@ class SettingsPageAdmin extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.lock),
             title: Text(
-              'Change Password',
+              'Reset Password',
               style: TextStyle(fontSize: 17),
             ),
             trailing: Icon(Icons.arrow_forward_ios),
             onTap: () {
-              // Navigasi ke halaman pengaturan privasi
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => ResetAdmin(),
+                ),
+              );
             },
           ),
           SizedBox(
@@ -180,7 +195,7 @@ class SettingsPageAdmin extends StatelessWidget {
               height: 60,
               width: double.infinity,
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 0, 71, 202),
+                  color: Color.fromARGB(255, 0, 120, 167),
                   borderRadius: BorderRadius.circular(15)),
             ),
           ),

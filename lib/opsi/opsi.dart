@@ -99,7 +99,7 @@ class _OpsiState extends State<Opsi> {
                           topRight: Radius.circular(10),
                         ),
                         child: Image.asset(
-                          "assets/images/record.png",
+                          "assets/images/suara.png",
                           width: 350,
                           height: 230,
                           fit: BoxFit.cover,
@@ -188,7 +188,7 @@ class _OpsiState extends State<Opsi> {
                           topRight: Radius.circular(10),
                         ),
                         child: Image.asset(
-                          "assets/images/face.png",
+                          "assets/images/wajah.png",
                           width: 350,
                           height: 230,
                           fit: BoxFit.cover,
